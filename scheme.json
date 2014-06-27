@@ -1,0 +1,28 @@
+{
+  "name": "ADTPack",
+
+  "buildDir": "./",
+
+  "compilerOptions": {
+    "compilationLevel": "ADVANCED_OPTIMIZATIONS",
+    "warningLevel": "VERBOSE",
+    "language": "ECMASCRIPT5",
+    "formatting": ""
+  },
+
+  "srcDir": "lib",
+  "rootNamespace": "dt",
+
+  "modules": [{
+    "name": "dt",
+    "src": [
+      "dt/dt.js"
+    ]
+  }],
+
+  "externs": "externs",
+
+  "deps": [{
+    "justUtils": "https://github.com/kalchevmax/justUtils"
+  }]
+}
