@@ -11,12 +11,7 @@ while (i < 3) {
   i += 1;
 }
 
-list.removeFirst();
-list.removeFirst();
-list.removeFirst();
-//list.removeLast();
-//list.removeLast();
-//list.removeLast();
+list.remove(3);
 
 
 var it = new dt.Iterator(list);
