@@ -1,7 +1,7 @@
 {
   "name": "ADTPack",
 
-  "buildDir": "./",
+  "buildDir": "bin",
 
   "compilerOptions": {
     "compilationLevel": "ADVANCED_OPTIMIZATIONS",
@@ -14,9 +14,14 @@
   "rootNamespace": "dt",
 
   "modules": [{
-    "name": "dt",
+    "name": "adt",
     "src": [
-      "dt/dt.js"
+      "dt.js",
+      "i-iterable.js",
+      "i-iterator.js",
+      "iterator.js",
+      "list-item.js",
+      "list.js"
     ]
   }],
 
