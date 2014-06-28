@@ -4,7 +4,7 @@
   "buildDir": "bin",
 
   "compilerOptions": {
-    "compilationLevel": "ADVANCED_OPTIMIZATIONS",
+    "compilationLevel": "SIMPLE_OPTIMIZATIONS",
     "warningLevel": "VERBOSE",
     "language": "ECMASCRIPT5",
     "formatting": ""
