@@ -21,7 +21,9 @@
       "i-iterator.js",
       "iterator.js",
       "list-item.js",
-      "list.js"
+      "list.js",
+      "queue-item.js",
+      "queue.js"
     ]
   }],
 
