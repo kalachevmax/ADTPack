@@ -1,5 +1,5 @@
 {
-  "name": "ADTPack",
+  "name": "justDS",
 
   "buildDir": "bin",
 
@@ -11,12 +11,12 @@
   },
 
   "srcDir": "lib",
-  "rootNamespace": "dt",
+  "rootNamespace": "ds",
 
   "modules": [{
-    "name": "adt",
+    "name": "ds",
     "src": [
-      "dt.js",
+      "ds.js",
       "i-iterable.js",
       "i-iterator.js",
       "iterator.js",
@@ -27,7 +27,7 @@
     ]
   }],
 
-  "externs": "externs",
+  "externsDir": "externs",
 
   "deps": [{
     "justUtils": "https://github.com/kalchevmax/justUtils"
