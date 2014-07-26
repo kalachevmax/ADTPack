@@ -1,5 +1,5 @@
 {
-  "name": "justDS",
+  "name": "semantic.ds",
 
   "buildDir": "bin",
 
@@ -13,23 +13,23 @@
   "srcDir": "lib",
   "rootNamespace": "ds",
 
-  "modules": [{
-    "name": "ds",
-    "src": [
-      "ds.js",
-      "i-iterable.js",
-      "i-iterator.js",
-      "iterator.js",
-      "list-item.js",
-      "list.js",
-      "queue-item.js",
-      "queue.js"
-    ]
-  }],
+  "modules": {
+    "semantic.ds": {
+      "src": [
+        "ds.js",
+        "i-iterable.js",
+        "i-iterator.js",
+        "iterator.js",
+        "list-item.js",
+        "list.js",
+        "queue.js"
+      ]
+    }
+  },
 
   "externsDir": "externs",
 
-  "deps": [{
-    "justUtils": "https://github.com/kalchevmax/justUtils"
-  }]
+  "deps": {
+    "semantic.utils": "https://github.com/kalchevmax/semantic.utils"
+  }
 }
