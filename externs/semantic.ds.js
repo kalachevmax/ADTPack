@@ -7,20 +7,106 @@ var ds = {};
 
 
 /**
- * @typedef {*}
+ * @interface
  */
-ds.ListData;
+ds.IDataItem = function() {};
 
 
 /**
- * @typedef {*}
+ * @return {*}
  */
-ds.QueueData;
+ds.IDataItem.prototype.get = function() {};
+
+
+/**
+ * @interface
+ */
+ds.IDataSet = function() {};
+
+
+/**
+ * @return {!ds.IDataItem}
+ */
+ds.IDataSet.prototype.getFirst = function() {};
+
+
+/**
+ * @param {*} data
+ */
+ds.IDataSet.prototype.add = function(data) {};
+
+
+/**
+ * @param {*=} opt_data
+ * @return {*}
+ */
+ds.IDataSet.prototype.remove = function(opt_data) {};
+
+
+/**
+ * @return {ds.IIterator}
+ */
+ds.IDataSet.prototype.getIterator = function() {};
+
+
+/**
+ * @return {boolean}
+ */
+ds.IDataSet.prototype.isEmpty = function() {};
+
+
+/**
+ *
+ */
+ds.IDataSet.prototype.destroy = function() {};
+
+
+/**
+ * @interface
+ */
+ds.IIterator = function() {};
+
+
+/**
+ * @return {boolean}
+ */
+ds.IIterator.prototype.hasNext = function() {};
+
+
+/**
+ * @return {*}
+ */
+ds.IIterator.prototype.next = function() {};
+
+
+/**
+ *
+ */
+ds.IIterator.prototype.destroy = function() {};
+
+
+/**
+ * @interface
+ */
+ds.IQueue = function() {};
+
+
+/**
+ * @param {*} data
+ */
+ds.IQueue.prototype.enqueue = function(data) {};
+
+
+/**
+ * @return {*}
+ */
+ds.IQueue.prototype.dequeue = function() {};
 
 
 /**
  * @constructor
- * @param {ds.ListData} data
+ * @implements {ds.IDataItem}
+ * @param {*} data
  * @param {ds.ListItem} prev
  * @param {ds.ListItem} next
  */
@@ -28,57 +114,14 @@ ds.ListItem = function(data, prev, next) {};
 
 
 /**
- * @return {ds.ListData}
+ * @return {*}
  */
-ds.ListItem.prototype.getData = function() {};
-
-
-/**
- * @return {ds.ListItem}
- */
-ds.ListItem.prototype.getNext = function() {};
-
-
-/**
- * @param {ds.ListItem} item
- */
-ds.ListItem.prototype.setNext = function(item) {};
-
-
-/**
- * @return {ds.ListItem}
- */
-ds.ListItem.prototype.getPrev = function() {};
-
-
-/**
- * @param {ds.ListItem} item
- */
-ds.ListItem.prototype.setPrev = function(item) {};
-
-
-/**
- * @interface
- */
-ds.IIterable = function() {};
-
-
-/**
- * @return {ds.ListItem}
- */
-ds.IIterable.prototype.getFirst = function() {};
-
-
-/**
- * @param {ds.ListItem} item
- * @return {ds.ListItem}
- */
-ds.IIterable.prototype.getNext = function(item) {};
+ds.ListItem.prototype.get = function() {};
 
 
 /**
  * @constructor
- * @implements {ds.IIterable}
+ * @implements {ds.IDataSet}
  */
 ds.List = function() {};
 
@@ -90,21 +133,9 @@ ds.List.prototype.getFirst = function() {};
 
 
 /**
- * @return {ds.ListItem}
+ * @return {ds.IDataItem}
  */
 ds.List.prototype.getLast = function() {};
-
-
-/**
- * @return {ds.ListItem}
- */
-ds.List.prototype.getPrev = function(item) {};
-
-
-/**
- * @inheritDoc
- */
-ds.List.prototype.getNext = function(item) {};
 
 
 /**
@@ -115,32 +146,32 @@ ds.List.prototype.isEmpty = function() {};
 
 /**
  * @param {number} itemNo
- * @return {ds.ListItem}
+ * @return {ds.IDataItem}
  */
 ds.List.prototype.locate = function(itemNo) {};
 
 
 /**
- * @param {ds.ListData} data
- * @return {ds.ListItem}
+ * @param {*} data
+ * @return {ds.IDataItem}
  */
 ds.List.prototype.find = function(data) {};
 
 
 /**
- * @param {ds.ListData} data
+ * @param {*} data
  */
 ds.List.prototype.addFirst = function(data) {};
 
 
 /**
- * @param {ds.ListData} data
+ * @param {*} data
  */
 ds.List.prototype.addLast = function(data) {};
 
 
 /**
- * @param {!ds.ListData} data
+ * @param {*} data
  * @param {number} itemNo
  */
 ds.List.prototype.add = function(data, itemNo) {};
@@ -161,7 +192,7 @@ ds.List.prototype.removeLast = function() {};
 /**
  * @param {number} itemNo
  */
-ds.List.prototype.remove = function(itemNo) {};
+ds.List.prototype.removeAt = function(itemNo) {};
 
 
 /**
@@ -171,36 +202,30 @@ ds.List.prototype.getSize = function() {};
 
 
 /**
- * @constructor
- * @implements {ds.IIterator}
- * @param {ds.IIterable} source
+ * @inheritDoc
  */
-ds.Iterator = function(source) {};
+ds.List.prototype.remove = function(opt_data) {};
 
 
 /**
  * @inheritDoc
  */
-ds.Iterator.prototype.hasNext = function() {};
+ds.List.prototype.getIterator = function() {};
 
 
 /**
  * @inheritDoc
  */
-ds.Iterator.prototype.next = function() {};
-
-
-/**
- *
- */
-ds.Iterator.prototype.destroy = function() {};
+ds.List.prototype.destroy = function() {};
 
 
 /**
  * @constructor
- * @implements {ds.IIterable}
+ * @implements {ds.IDataSet}
+ * @implements {ds.IQueue}
+ * @param {*} dataType
  */
-ds.Queue = function() {};
+ds.Queue = function(dataType) {};
 
 
 /**
@@ -212,16 +237,40 @@ ds.Queue.prototype.getFirst = function() {};
 /**
  * @inheritDoc
  */
-ds.Queue.prototype.getNext = function(item) {};
+ds.Queue.prototype.add = function(data) {};
 
 
 /**
- * @param {ds.QueueData} data
+ * @inheritDoc
+ */
+ds.Queue.prototype.remove = function(opt_data) {};
+
+
+/**
+ * @inheritDoc
+ */
+ds.Queue.prototype.isEmpty = function() {};
+
+
+/**
+ * @inheritDoc
+ */
+ds.Queue.prototype.getIterator = function() {};
+
+
+/**
+ * @inheritDoc
+ */
+ds.Queue.prototype.destroy = function() {};
+
+
+/**
+ * @inheritDoc
  */
 ds.Queue.prototype.enqueue = function(data) {};
 
 
 /**
- * @return {ds.QueueData}
+ * @inheritDoc
  */
 ds.Queue.prototype.dequeue = function() {};

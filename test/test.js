@@ -11,15 +11,16 @@ while (i < 3) {
   i += 1;
 }
 
-list.remove(3);
+list.removeAt(3);
 
 
-var it = new ds.Iterator(list);
+var it = list.getIterator();
 while (it.hasNext()) {
   console.log(it.next());
 }
 
 it.destroy();
+list.destroy();
 
 
 var queue = new ds.Queue();
@@ -31,3 +32,5 @@ queue.enqueue(3);
 console.log(queue.dequeue());
 console.log(queue.dequeue());
 console.log(queue.dequeue());
+
+queue.destroy();

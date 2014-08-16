@@ -17,10 +17,12 @@
     "semantic.ds": {
       "src": [
         "ds.js",
-        "i-iterable.js",
+        "i-data-item.js",
+        "i-data-set.js",
         "i-iterator.js",
-        "iterator.js",
+        "i-queue.js",
         "list-item.js",
+        "list-iterator.js",
         "list.js",
         "queue.js"
       ]
