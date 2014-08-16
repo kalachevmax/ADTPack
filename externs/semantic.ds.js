@@ -174,7 +174,7 @@ ds.List.prototype.addLast = function(data) {};
  * @param {*} data
  * @param {number} itemNo
  */
-ds.List.prototype.add = function(data, itemNo) {};
+ds.List.prototype.addAt = function(data, itemNo) {};
 
 
 /**
@@ -199,6 +199,12 @@ ds.List.prototype.removeAt = function(itemNo) {};
  * @return {number}
  */
 ds.List.prototype.getSize = function() {};
+
+
+/**
+ * @inheritDoc
+ */
+ds.List.prototype.add = function(data) {};
 
 
 /**
